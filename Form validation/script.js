@@ -5,6 +5,7 @@ const email = document.getElementById('email');
 const password = document.getElementById('password');
 const password2 = document.getElementById('password2');
 const submitSuccess = document.getElementById('submitSuccess');
+var totalScore = 0;
 //-----------------------------------------------------------
 
 
@@ -13,8 +14,10 @@ form.addEventListener('submit', (e)=>{
     e.preventDefault();
 
     checkInputs();
-
-    showSubmitSuccess();
+    
+    if(totalScore == 4){
+        showSubmitSuccess();
+    }
 });
 
 function checkInputs(){
@@ -31,6 +34,7 @@ function checkInputs(){
         setErrorFor(username, "Username must be at least 3 letters");
     }else{
         setSuccessFor(username);
+        totalScore= totalScore+1; 
     }
 
     if(emailValue === ''){
@@ -41,6 +45,7 @@ function checkInputs(){
 
     }else{
         setSuccessFor(email);
+        totalScore= totalScore+1; 
     }
 
     if(passwordValue === ''){
@@ -50,6 +55,7 @@ function checkInputs(){
         setErrorFor(password, "Password should be longer than 8 letters");
     }else{
         setSuccessFor(password);
+        totalScore= totalScore+1; 
     }
 
     if(password2Value === ''){
@@ -59,6 +65,7 @@ function checkInputs(){
         setErrorFor(password2, "Passwords do not match")
     }else{
         setSuccessFor(password2);
+        totalScore= totalScore+1; 
     }
     
 
